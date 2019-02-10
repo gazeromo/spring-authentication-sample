@@ -102,7 +102,7 @@ public class ScannerWorker extends Thread {
             }
 
             if(sync) {
-                long end = System.currentTimeMillis() + 300000; // 5 min
+                long end = System.currentTimeMillis() + 900000; // 15 min
                 while(System.currentTimeMillis() <= end) {
                     for (WorkerAccount account : accounts) {
                         for (WorkerAccount innerAccount : accounts) {
@@ -818,7 +818,7 @@ public class ScannerWorker extends Thread {
                 if (!contains) {
                     Instant now = Instant.now();
                     Instant modified = Instant.parse(mData.modified);
-                    modified = modified.plusSeconds(300);
+                    modified = modified.plusSeconds(900);
                     if (modified.isAfter(now) || sync) {
                         HashMap<String, Object> fileParams = new HashMap<>();
                         for (Metadata data : destinationList.getMetadataList()) {
@@ -906,7 +906,7 @@ public class ScannerWorker extends Thread {
 
                     Instant now = Instant.now();
                     Instant modified = Instant.parse(data.modified);
-                    modified = modified.plusSeconds(300);
+                    modified = modified.plusSeconds(900);
                     if (modified.isBefore(now)) {
                         destinationStorage.delete(null, com.kloudless.model.File.class, data.id);
                         logger.debug("File {} has been deleted from destination storage (if)", data.name);
@@ -924,7 +924,7 @@ public class ScannerWorker extends Thread {
                             if (!file.parent.name.equals(data.parent.name) && file.mime_type.equals(data.mime_type)) {
                                 Instant now = Instant.now();
                                 Instant modified = Instant.parse(data.modified);
-                                modified = modified.plusSeconds(300);
+                                modified = modified.plusSeconds(900);
                                 if (modified.isBefore(now)) {
                                     destinationStorage.delete(null, com.kloudless.model.File.class, data.id);
                                     logger.debug("File {} has been deleted from destination storage (else)", data.name);
