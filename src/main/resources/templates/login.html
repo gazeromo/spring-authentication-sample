@@ -99,7 +99,7 @@
         <p th:if="${param.error}">Invalid Login or Password</p>
         <p th:if="${param.logout}">Logout successful!</p>
         <form id="login-form" class="text-left" th:action="@{/login}" method="post">
-            <input type="text" class="form-control float" id="username" name="username" placeholder="username"/>
+            <input type="text" class="form-control float" id="username" name="username" placeholder="Email"/>
             <input type="password" class="form-control float" id="password" name="password" placeholder="password"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin float">Log in</button>
